@@ -92,7 +92,8 @@ export function CartPage() {
               <button type="button" className="cart-summary__clear" onClick={clearCart}>
                 Очистить корзину
               </button>
-              <button
+              <button 
+            data-testid='makeOrderButton'
                 type="button"
                 className="cart-summary__order"
                 onClick={handleOrderClick}
