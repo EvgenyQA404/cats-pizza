@@ -28,4 +28,13 @@ export class CheckoutPage {
     await expect(this.page.getByTestId('closeSubmittedModalButton')).toBeVisible();
     await this.page.getByTestId('closeSubmittedModalButton').click();
   }
+  async sumbitWithoutAddress() {
+    await this.page.getByTestId('approveOrder').click();
+  }
+  async assertCheckoutOpened() {
+    await expect(this.page.getByTestId('modalTitle')).toHaveText('Оформление доставки');
+  }
+  async assertValidationError(message: string) {
+    await expect(this.page.getByText(message)).toBeVisible();
+  }
 }

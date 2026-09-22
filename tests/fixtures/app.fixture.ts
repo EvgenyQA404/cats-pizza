@@ -3,6 +3,7 @@ import { HomePage } from '../pom/pages/HomePage';
 import { AuthModal } from '../pom/pages/AuthModal';
 import { CheckoutPage } from '../pom/pages/CheckoutPage';
 import { OrdersPage } from '../pom/pages/OrdersPage';
+import { CartPage } from '../pom/pages/CartPage';
 import path from 'node:path';
 import process from 'node:process';
 
@@ -14,6 +15,7 @@ type MyFixtures = {
   authPage: AuthModal;
   checkoutPage: CheckoutPage;
   ordersPage: OrdersPage;
+  cartPage: CartPage;
 };
 
 type AppOptions = {
@@ -38,6 +40,10 @@ const appTest = base.extend<MyFixtures>({
   ordersPage: async ({ page }, fixtureUse) => {
     const ordersPage = new OrdersPage(page);
     await fixtureUse(ordersPage);
+  },
+  cartPage: async ({ page }, fixtureUse) => {
+    const cartPage = new CartPage(page);
+    await fixtureUse(cartPage);
   },
 });
 
