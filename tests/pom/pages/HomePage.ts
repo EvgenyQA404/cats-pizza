@@ -1,4 +1,6 @@
 import { expect, type Page } from '@playwright/test';
+import { CartApi } from '../api/mockApi/cartApi';
+import { CatsApi } from '../api/mockApi/catsApi';
 
 export class HomePage {
   constructor(private page: Page) {
@@ -7,6 +9,12 @@ export class HomePage {
 
   async open() {
     await this.page.goto('/');
+  }
+  async setupApi() {
+    const catsApi = new CatsApi(this.page);
+    const cartApi = new CartApi(this.page);
+    await cartApi.setCartWithOneItem();
+    await catsApi.setCatsItems();
   }
   async addFirstCatToCart() {
     await this.page.getByTestId('catCard_0').getByTestId('addToCartButton').click();
@@ -39,5 +47,8 @@ export class HomePage {
   async assertCartPageOpened() {
     await expect(this.page).toHaveURL(/\/cart$/);
     await expect(this.page.getByRole('heading', { name: 'Корзина' })).toBeVisible();
+  }
+  async assertCorrectPageWithItems() {
+    await expect(this.page).toHaveScreenshot('homePageWithItems.png');
   }
 }
