@@ -1,7 +1,9 @@
 import { expect, type Page } from '@playwright/test';
 
 export class CheckoutPage {
-  constructor(private page: Page) {
+  private page: Page;
+
+  constructor(page: Page) {
     this.page = page;
   }
 

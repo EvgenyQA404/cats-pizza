@@ -1,8 +1,10 @@
-import { Page } from '@playwright/test';
+import type { Page } from '@playwright/test';
 import { cats } from '../../mockData/cats';
 
 export class CatsApi {
-  constructor(private page: Page) {
+  private page: Page;
+
+  constructor(page: Page) {
     this.page = page;
   }
   async setCatsItems() {

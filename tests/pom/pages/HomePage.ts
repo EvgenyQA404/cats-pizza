@@ -3,7 +3,9 @@ import { CartApi } from '../api/mockApi/CartApi';
 import { CatsApi } from '../api/mockApi/CatsApi';
 
 export class HomePage {
-  constructor(private page: Page) {
+  private page: Page;
+
+  constructor(page: Page) {
     this.page = page;
   }
 

@@ -2,7 +2,9 @@ import type { Page } from '@playwright/test';
 import { cartWithOneItem, emptyCart } from '../../mockData/cart';
 
 export class CartApi {
-  constructor(private page: Page) {
+  private page: Page;
+
+  constructor(page: Page) {
     this.page = page;
   }
   async setCartWithOneItem() {
